@@ -38,8 +38,8 @@ void random_function(vector <int> a, vector <int> b,int k){
     int n = a.size(), m = b.size();
     int counter = 0,whichWasSentLast = 1;
     
-    while(poiter_a < n and pointer_b < m){
-        if(a.at(pointer_a) <= pointer_b){
+    while(pointer_a < n and pointer_b < m){
+        if(a.at(pointer_a) < b.at(pointer_b) ){
             pointer_a++;
             counter++;
             whichWasSentLast = 1;
@@ -52,9 +52,10 @@ void random_function(vector <int> a, vector <int> b,int k){
         
         if(counter == k){
             if(whichWasSentLast == 1){
-                cout << a.at(pointer_a - 1) << endl;
+                cout << a.at(pointer_a - 1);
             }
-            else cout << b.at(pointer_b - 1) << endl;
+            else cout << b.at(pointer_b - 1);
+            cout << endl;
             break;
         }
     }
@@ -77,6 +78,7 @@ int main()
             cin >> b.at(i);
         }
         
+        //cout << "fs";
         random_function(a,b,k);
     }
 	return 0;
