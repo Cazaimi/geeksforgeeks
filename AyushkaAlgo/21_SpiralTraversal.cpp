@@ -5,76 +5,71 @@
 
 using namespace std;
 
-int main(){
+void increment(int &i,int &j, int direction){
+    
+    direction = direction % 4;
+    if(direction == 1){
+        j++;  //right
+    }
+    else if(direction == 2){
+        i++;  //down
+    }
+    else if(direction == 3){
+        j--;  //left
+    }
+    else if(direction == 0){
+        i--;  //up
+    }
+}
 
+int main()
+ {
+	//code
 	int t = 0;
 	cin >> t;
-	for(int j = 0;j < t;j++){
-
-		int n = 0;
-		cin >> n;
-		vector <int> input[n];
-		for(int i = 0;i < n;i++){
-			for(int k = 0;k < n;k++){
-				int temp = 0;
-				cin >> temp;
-				input[i].push_back(temp);
-			}
-		}
-
-		/* loop(i,0,n){
-			loop(k,0,n){
-				cout << input[i][j];
-			}
-		} */
-
-		//indexes to traverse the matrix
-		int i =0;j = 0;
-		//Tells when to stop and change direction
-		int EdgeTraversal = 4;
-		//Tells when to change EdgeTraversal. Changes EdgeTraversal when Count = 1.  
-		int EdgeTraversalCount = 0;
-		//Tells how much has been travelled since the change of direction.
-		int travel = 0;
-		//Changes direction when count = 1;
-		int directionCount = 0;
-
-		do{
-			cout << input[i][j] << " ";
-			j++;
-		}
-		while(j <= 3);
-
-		do{
-			cout << input[i][j] << " ";
-			i++;
-		}
-		while(i <= 3);
-		
-		do{
-			cout << input[i][j] << " ";
-			j--;
-		}
-		while(j >= 0);
-		
-		do{
-			cout << input[i][j] << " ";
-			i--;
-		}
-		while(i >= 1);
-
-		do{
-			cout << input[i][j] << " ";
-			j++;
-		}
-		while(j <= 2);
-
-		do{
-			cout << input[i][j] << " ";
-			i++;
-		}
-		while(i <= 2);
-
-		cout << input[2][1] << "\n";
+	loop(test,0,t){
+	
+	    int n = 4;
+        int arr[4][4];
+	    loop(i,0,n){
+	        loop(j,0,n){
+    	        cin >> arr[i][j];
+	        }
+	    }
+	    /* Testing loop(i,0,n){
+	        loop(j,0,n){
+	            cout << arr[i][j] << " ";
+	        }
+	        cout << endl;
+	    } */
+        
+        int howlonguntildirectionchange = 4;
+        int count = 1;   //reduce hludc when count = 2 
+        int direction = 1;   //1 -> right, 2 -> down
+        //, 3 -> left, 4 -> up
+        
+        int travel = 1;  //to keep track of moves
+        int  i = 0, j = 0, tummy =0;
+        
+        while(howlonguntildirectionchange > 0){
+            travel = 1;
+            cout << arr[i][j] << " ";
+            while(travel < howlonguntildirectionchange){
+                travel++;
+                increment(i,j,direction);
+                cout << arr[i][j] << " ";
+                
+            }
+        
+            count++;
+            direction++;
+            increment(i,j,direction);
+            if(count == 2){
+                howlonguntildirectionchange--;
+                count = 0;
+            }
+        }
+        cout << endl;
 	}
+	return 0;
 }
