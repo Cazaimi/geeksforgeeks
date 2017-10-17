@@ -1,4 +1,4 @@
-/** K-th element of two sorted Arrays
+/* K-th element of two sorted Arrays
    
 Given two sorted arrays of size m and n respectively, you are tasked with finding the element that would be at the k’th position of the final sorted array.
 
