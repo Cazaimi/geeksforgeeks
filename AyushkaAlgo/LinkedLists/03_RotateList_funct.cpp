@@ -53,35 +53,41 @@ void rotate(struct node **head_ref, int k){
      node * current = *head_ref;
      node * new_head = nullptr;
      node * new_headminus1 = nullptr;
-     int n = 0;
-     while(current != nullptr){
+     node * last = nullptr;
+     int n = 1;
+     while(current -> next!= nullptr){
           current = current -> next;
           n++;
+
      }
+     last = current;
 
      //Now we know about the number of nodes in the linked list.
+    
+    if(k % n != 0){
+          k = k % n;
+          int m = 0;
+          current = *head_ref;
+          while(current != nullptr){
+               if(m == k-1){
+                    new_headminus1 = current;
+               }
+               if(m == k){
+                    new_head = current;
+               }
+               current = current -> next;
+               m++;
+          }
 
-     k = k % n;
-     current = head_ref;
-     int m = 1;
-     while(current -> next != nullptr){
-          current = current -> next;
-          m++;
-          if(m == k){
-               new_headminus1 = current;
-          }
-          if(m == k+1){
-               new_head = current;
-          }
+          //Now, we have the values for new head, new head-1 and last.
+          //10-20-30-40-50-60 -> 50-60-10-20-30-40
+          new_headminus1 -> next = nullptr;
+          last -> next = *head_ref;
+          *head_ref = new_head;
+
+          //cout << last -> data << " " << new_head -> data << " " << new_headminus1 -> data <<  endl;
      }
-
-     //now, current holds the value of the last node.
-     //In 10-20-30-40-50-60, current is now 60.
-
-     current -> next = head_ref;
-     head_ref = new_head;
-     new_headminus1 -> next = nullptr;
-
+    // cout << last -> data << endl;
 
 }
 
