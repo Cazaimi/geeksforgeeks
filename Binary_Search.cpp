@@ -16,10 +16,12 @@ int Binary_search(vector <int> input, int toBeFound){
         double half =  start + (end - start) / 2;
         cout << "half " << half << endl;
         if(toBeFound >= input.at(half) ){
-            start = half;
+            //For ascending start = half;
+            end = half; //for descending
         }
         else {
-            end = half;
+            //for ascending end = half;
+            start = half; //for descending
         }
         
         if(input.at(start) == toBeFound) return start;
