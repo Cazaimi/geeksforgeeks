@@ -1,0 +1,36 @@
+Ok, now let's make some rules. The clock has started ticking. 
+
+Now, I will spend ~10 mins into this.
+
+What happened yesterday was terrible. I was not able to solve th problem, perhaps there were some other distractions as well. 
+In any case, what ensued was a complete waste of time. Let's not do that. Let's keep a daily target, and track our progress. How?
+
+1. Excel sheet. Maintain days vs. problems solved. 
+2. Be mechanical. Spend 10 mins thinking about a problem. 
+	if you figured it out, good. Implement it in the next 20 minutes.
+	if you were not able to figure it out, look at the editorial. 
+	Spend not more than 15 minutes on the editorial.
+	Were you able to implement it? No? Move on. Come back to it later, in leisure time.
+	
+	What is the time now?
+	wow, 4 min.
+	
+	
+OK. Got it? good.
+
+So, worst case = 10 + 15 + 20 = 45 mins
+	best case  = 10 + 20      = 30 mins
+
+Speaking of leisure time, if you're not able to solve a problem, sanction some time for it later on.
+
+This could be at night, where you waste time, or on the weekends.
+
+I need to track progress. Let's make a goal:
+
+I will finish Stacks and Queues in 2 days, Tops.
+
+06:47
+
+Then, I will make another target. Let's save a reminder.
+
+Done.
