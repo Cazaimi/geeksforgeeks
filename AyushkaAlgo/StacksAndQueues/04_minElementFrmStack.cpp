@@ -62,29 +62,42 @@ public :
 int _stack :: getMin()
 {
    //Your code here
+   if(!s.empty())
 	return minEle;
+	else return -1;
 }
 /*returns poped element from stack*/
 int _stack ::pop()
 {
-    if(s.empty())
-	int y = s.top();
-	if(y < minEle){
-		minEle = 2 * minEle - y;
-		y = minEle;
-		s.pop();
-	}
-	else if(y == minEle){
-		s.pop();
-	}
-	else if(y > minEle){
-		s.pop();
-	}
-	return y;
+    if(!s.empty()){
+        int y = s.top();
+	    if(y < minEle){
+	        //cout << "We're gonna pop. Min Ele(before):" << minEle;
+	        int currMinEle = minEle;
+		    minEle = 2 * minEle - y;
+		    //cout << "Min Ele(after):" << minEle << endl;
+		    s.pop();
+		    //cout << "In here\n";
+		    return currMinEle;
+	    }
+	    else if(y == minEle){
+	    	s.pop();
+	    }
+	    else if(y > minEle){
+	    	s.pop();
+	    }
+    	return y;    
+    }
+    else{
+        return -1;
+    }
+	
 }
 /*push element x into the stack*/
 void _stack::push(int x)
 {
+    //cout << "Inserting:" << x ;
+    //cout << " min Ele:" << minEle << endl;
 	if(s.empty()){
 		s.push(x);
 		minEle = x;
@@ -94,6 +107,7 @@ void _stack::push(int x)
 		if(x < minEle){
 			s.push(2 * x - minEle);
 			minEle = x;
+			
 		}
 		else s.push(x);
 	}
