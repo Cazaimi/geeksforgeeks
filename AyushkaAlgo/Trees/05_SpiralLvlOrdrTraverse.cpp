@@ -35,7 +35,7 @@ There are two test casess.  First case represents a tree with 3 nodes and 2 edge
 /*
 Please note that it's Function problem i.e.
 you need to write your solution in the form of Function(s) only.
-Driver Code to call/invoke your function would be added by GfG's Online Judge.*/
+Driver Code to call/invoke your function would be added by GfG's Online Judge..*/
 
 
 /* A binary tree node has data, pointer to left child
