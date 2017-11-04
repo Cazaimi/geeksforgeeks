@@ -74,7 +74,7 @@ int random_function(string a,string b){
                cout << arr[i].at(j) << " ";
           }
           cout << endl;
-     }*/
+     }*//
      int maxx = 0;
      loop(i,0,n+1){
           loop(j,0,m+1){
