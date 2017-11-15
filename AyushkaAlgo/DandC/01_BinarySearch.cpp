@@ -16,7 +16,7 @@ int random_function(int input[], int low, int high, int key){
 	if(low >= high) return -1;
 	
 	int middle = low + ((high-low)/2);
-	if(key > input[low] ) return random_function(input,middle,high,key);
+	if(key > input[middle] ) return random_function(input,middle,high,key);
 	else return random_function(input,low,middle,key);
 }
 
