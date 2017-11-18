@@ -59,7 +59,7 @@ int main()
 	    loop(i,0,n) sum += input.at(i);
 	    //cout << sum << endl;
 		if(sum % 2 != 0) { 
-			cout << 0 << endl;
+			cout << "NO" << endl;
 			continue;
 		}
 			    
