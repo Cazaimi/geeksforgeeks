@@ -6,11 +6,11 @@
 
 using namespace std;
 
-int eg(int n, int k, vector <vector<int> > dp){
+/*int eg(int n, int k, vector <vector<int> > dp){
 	
 	//cout << n << " " << k << endl;
 	/*n is the number of eggs left.
-	k is the floor number. */
+	k is the floor number. 
 	if(k == 0) return 0;
 	if(k == 1) return 1;
 	if(n == 1) return k;
@@ -26,34 +26,44 @@ int eg(int n, int k, vector <vector<int> > dp){
 	
 	dp[n][k] = minn + 1;
 	return dp[n][k];
-}
+} */
 
 int eg(int n, int k){
 	
 	/*initializing look up table 
 	dp*/
-	int dp[n][k+1];
+	int dp[n+1][k+1];
 	
-	loop(j,0,k+1) dp[0][j] = j;
 	
 	loop(i,0,n+1){
-	 dp[i][0] = 0;
-	 dp[i][1] = 1;
-	 }
+	 	dp[i][0] = 0;
+		dp[i][1] = 1;
+	}
+	
+	loop(j,1,k+1) {
+		//dp[0][j] = 0;	
+		dp[1][j] = j;
+	}
 	
 	
-	loop(i,1,n){
+	loop(i,2,n+1){
 		loop(j,2,k+1){
-			int res = INT_MAX;
+			dp[i][j] = INT_MAX;int res;
 			loop(x,1,j+1){
 				res = 1+max(dp[i-1][x-1], dp[i][j-x]);
 				if(res < dp[i][j]) dp[i][j] = res;
-			}
-			
+			}			
 		}
 	}
 	
-	return dp[n][]
+	/*loop(i,0,n+1){
+		loop(j,0,k+1){
+			cout << dp[i][j] << " ";
+		}
+		cout << endl;
+	}*/
+	
+	return dp[n][k];
 }
 
 int main(){
