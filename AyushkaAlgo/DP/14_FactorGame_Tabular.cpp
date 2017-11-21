@@ -32,6 +32,7 @@ using namespace std;
 
 int game(int n){
 	
+	//cout << n ;
 	int turn = 1;
 	int dp[n+1][2];
 	
@@ -43,15 +44,26 @@ int game(int n){
 	for(int i = 2; i <= n; i++){
 		for(int j = 0; j <= 1;j++){
 			dp[i][j] = (j+1) % 2; int res;
-			for(int x = 1; x < i;i++){
+			for(int x = 1; x < i;x++){
+				//cout << i << " " << j << " " << x << endl;
 				if(i % x == 0){
-					res = dp[i-x][(turn+1)%2];
+					res = dp[i-x][(j+1)%2];
 					if(res != j % 2) continue;
-					else dp[i][j] = res;
+					else {
+						dp[i][j] = res;
+						break;
+					}	
 				}
 			}
 		}
 	}
+	
+	/*loop(i,0,n+1){
+		loop(j,0,2){
+			cout << dp[i][j] << " ";
+		}
+		cout << endl;
+	}*/
 	
 	return dp[n][1];
 }
