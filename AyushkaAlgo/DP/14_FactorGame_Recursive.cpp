@@ -7,10 +7,8 @@ using namespace std;
 
 int game(int n, int turn){
     
-    //cout << "(" << n << "," << turn%2 << ")" << endl;
 	//base cases.
 	if(n <= 0){
-		//cout << "being called!\n" ;
 		if(turn % 2 == 0)
 		return 0;
 		else return 1;  
@@ -19,7 +17,6 @@ int game(int n, int turn){
 	int winner = (turn + 1) % 2;
 	for(int i = 1;i < n; i++){
 		if(n % i == 0){
-			//cout << "n:" << n << " i:" << i << endl;
 			winner = game(n - i,turn+1);
 			if(winner != turn % 2) continue;
 			else break;
