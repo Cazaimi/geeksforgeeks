@@ -8,13 +8,26 @@ int compare ( pair<pair <char,char>,int> a, pair<pair <char,char>,int> b){
 	return a.first.first < b.first.first? 1:0;
 }
 
-int cs(vector <pair<pair <char,char>,int> > input){
+int cs(vector <pair <char,char> > input){
 	
-	sort(input.begin(),input.end(), compare);
+	//sort(input.begin(),input.end(), compare);
+	vector <pair<int,int> > alphabet(26);
 	
 	loop(i,0,input.size()){
-		if(
+		alphabet[input[i].first-97].first++;
+		alphabet[input[i].first-97].second = i;
 	}
+	
+	loop(i,0,input.size()){
+		if(alphabet[input[i].second-97].first > 0 and alphabet[input[i].second-97].second != i){
+			alphabet[input[i].second-97]--;
+		}
+		else{
+			return 0;
+		}
+	}
+	
+	return 1;
 }
 
 int main()
@@ -26,13 +39,13 @@ int main()
 	
 	    int n = 0;
 	    cin >> n;
-	    vector <pair<pair <char,char>,int> > input(n);
+	    vector <pair <char,char> > input(n);
 	    loop(i,0,n){
-	    	string temp;
+	    	   string temp;
 	        cin >> temp;
-	        input.first.first = temp[0];
-	        input.first.second = temp[temp.size()-1];
-	        input.second = 0;
+	        input[i].first = temp[0];
+	        input[i].second = temp[temp.size()-1];
+	        //input.second = 0;
 	    }
 	    
 	    cout << cs(input) << endl;
