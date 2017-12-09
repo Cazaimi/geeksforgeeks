@@ -21,3 +21,92 @@ Input
 Output:
 [1 ]
 [2 4 1 3 ] [3 1 4 2 ] */
+
+#include <bits/stdc++.h>
+#define loop(i,a,n) for(int i = a;i < n;i++)
+
+using namespace std;
+
+bool isSafeHere(int a, int b, vector <vector <int> > board);
+bool funcUtil(vector <vector <int> > &board, int column){
+    
+    int n = board.size();
+    if(column >= n) {
+        for(int j = 0;j < n; j++){
+            cout << "[";
+            for(int i = 0;i < n; i++){
+                if(board[i][j] == 1){
+                    if(j != n-1) cout << i << ",";
+                    else cout << i << " ] ";
+                }
+            }
+        }
+        cout << "dummy\n";
+        return true;
+    }
+    
+    bool found = false;
+    //iterate through rows.
+    for(int k = 0;k < n; k++){
+        
+        //Place queen here.
+        if(isSafeHere(k,column,board)){
+         
+            board[k][column] = 1;
+            
+            if(funcUtil(board,column+1))
+                found = true;
+                
+            board[k][column] = 0;
+        }
+    }
+    
+    if(found) return true;
+    else return true;
+}
+
+void func(int n){
+    vector <vector <int> > board;
+    
+    //Chess Board
+    loop(i,0,n){
+        vector <int> row(n);
+        board.push_back(row);
+    }
+    
+    
+    bool dummy = funcUtil(board, 0);
+    if(dummy) ;
+    else cout << "-1\n";
+    
+}
+
+int main()
+ {
+	//code
+	int t = 0;
+	cin >> t;
+	loop(j,0,t){
+	
+	    int n = 0;
+	    cin >> n;
+	    func(n);
+	}
+	return 0;
+}
+
+bool isSafeHere(int a, int b, vector <vector <int> > board){
+    int n = board.size();
+    loop(i,0,n){
+        loop(j,0,n){
+            if(board[i][j]){
+                if(    a-i == 0
+                    or b - j == 0 
+                    or abs(a-i) == abs(b-j)  )
+                    return false;
+            }
+        }
+    }
+    return true;
+}
+
