@@ -1,13 +1,4 @@
-
-Bottom View of Binary Tree (Function Problem)
-
-
-
-
-
-
-
-
+/*Bottom View of Binary Tree (Function Problem)
 Given a Binary Tree,  print the bottom view from left to right. A node x is there in output if x is the bottommost node at its horizontal distance from root.
 Horizontal distance of left child of a node x is equal to horizontal distance of x minus 1, and that of right child is horizontal distance of x plus 1.
 
@@ -64,3 +55,53 @@ Output:
 
 There are two test casess.  First case represents a tree with 3 nodes and 2 edges where root is 1, left child of 1 is 3
 and right child of 1 is 2.   Second test case represents a tree with 4 edges and 5 nodes.
+*/
+
+/*
+Please note that it's Function problem i.e.
+you need to write your solution in the form of Function(s) only.
+Driver Code to call/invoke your function would be added by GfG's Online Judge.*/
+
+
+/* Tree node class
+struct Node
+{
+    int data; 
+    Node *left, *right; 
+}; */
+// Method that prints the bottom view.
+#define loop(i,a,n) for(int i = a;i < n;i++)
+
+void print(vector <pair<int,int> > a){
+    loop(i,0,a.size()) {
+        if(a[i].first != -1 and a[i].second != -1)
+        cout << a[i].first << " ";
+    }
+    //cout << endl;
+}
+
+void bottomViewUtil(Node *root, int width, int height, vector <pair<int,int> > &answer){
+    
+    if(root == nullptr){
+        ;//do nothing.
+        //cout << "height:" << height << " ";
+        
+    }
+    else{
+        if(height >= answer[width+100].second){
+            answer[width+100].first = root -> data;
+            answer[width+100].second = height;
+            
+        }
+        
+        bottomViewUtil(root -> left,width-1,height+1,answer);
+        bottomViewUtil(root -> right,width+1,height+1,answer);
+    }
+}
+
+void bottomView(Node *root){
+   vector <pair<int,int> > answer(200,make_pair(-1,-1));
+   
+   bottomViewUtil(root,0,0,answer);
+   print(answer);
+}
